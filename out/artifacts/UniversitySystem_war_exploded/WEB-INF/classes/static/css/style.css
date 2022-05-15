@@ -1,0 +1,84 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: #ecebeb;
+}
+
+.header-title {
+  font-family: "Poppins", sans-serif;
+  color: #333333;
+  text-align: center;
+}
+
+.header-title h1 {
+  font-size: 24px;
+}
+
+.login-modal {
+  background: #6497B1;
+  padding: 20px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.login-modal .panel-img {
+  width: 100%;
+  overflow: hidden;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 4px;
+}
+
+.login-modal .panel-img img {
+  width: 100%;
+  height: auto;
+}
+
+.login-modal .panel-container {
+  margin: 0;
+}
+
+.login-modal .panel-container .panel-title {
+  font-family: "Lato", sans-serif;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+}
+
+.login-modal .panel-container .panel-body .form-group i {
+  color: #888888;
+  position: absolute;
+  font-size: 20px;
+  -webkit-transform: translate(15px, 8px);
+          transform: translate(15px, 8px);
+}
+
+.login-modal .panel-container .panel-body input[type="text"], .login-modal .panel-container .panel-body input[type="password"] {
+  padding-left: 45px;
+  color: #333333;
+}
+
+.login-modal .panel-container .panel-body .remember-me {
+  color: #ffffff;
+}
+
+.login-modal .panel-container .panel-body .login-btn-container {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.login-modal .panel-container .panel-body .login-btn-container .btn {
+  width: 90px;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+/*# sourceMappingURL=style.css.map */

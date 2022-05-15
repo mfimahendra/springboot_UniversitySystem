@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: HP
+Build-Jdk: Oracle OpenJDK version 18
+Implementation-Title: UniversitySystem
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.nuistindo
+Main-Class: ${start-class}
+

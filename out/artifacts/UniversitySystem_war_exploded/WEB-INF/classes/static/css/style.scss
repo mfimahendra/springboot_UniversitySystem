@@ -1,0 +1,100 @@
+$light: #ffffff;
+$semilight: #ecebeb;
+$semibrightlight : #F8F9FA;
+$dark: #333333;
+$semidark: #888888;
+$blue: #045C97;
+$semidarkblue: #03386D;
+$darkblue: #02204C;
+$lightblue: #B3CEE2;
+$semilightblue: #6497B1;
+$yellow: #ffb703;
+$red: #e94b35;
+$bg: #e94b35;
+$bg-container: #f2f2f2;
+$gradient-ppit: linear-gradient(18deg, rgb(90, 138, 153) 0%, rgb(179, 105, 105) 100%);
+
+$noto: "Noto Sans", sans-serif;
+$nunito: "Nunito", sans-serif;
+$poppins: "Poppins", sans-serif;
+$lato: 'Lato', sans-serif;
+$opensans: 'Open Sans', sans-serif;
+
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding-inline-start: 0;
+
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $nunito;
+    background: $semilight;    
+}
+
+.header-title {
+    font-family: $poppins;
+    color: $dark;    
+    text-align: center;
+    h1 {
+        font-size: 24px;
+    }
+}
+
+.login-modal {
+    background: $semilightblue;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);        
+
+    .panel-img {
+        width: 100%;
+        overflow: hidden;
+        object-fit: contain;
+        border-radius: 4px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .panel-container {
+        margin: 0;                
+
+        .panel-title {
+            font-family: $lato;
+            color: $light;
+            text-align: center;
+            font-size: 20px;
+        }
+        .panel-body {
+            .form-group {
+                i {
+                    color: $semidark;
+                    position: absolute; 
+                    font-size:20px;
+                    transform:translate(15px,8px);
+                }
+            }
+            input[type="text"], input[type="password"] {
+                padding-left: 45px;
+                color: $dark;
+            }
+            .remember-me {
+                color: $light;
+            }
+            .login-btn-container{                                
+                margin-top: 20px;
+                padding: 0;
+
+                .btn {
+                    width: 90px;
+                    font-size: 16px;
+                    padding: 5px 10px;
+                }
+            }
+        }
+    }    
+}
