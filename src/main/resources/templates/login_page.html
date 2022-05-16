@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +40,7 @@
                     <h3 class="panel-title">Login</h3>
                 </div>
                 <div class="panel-body mt-2">
-                    <form role="form" action="Login" method="post">
+                    <form role="form" action="login" method="post" th:object="${loginRequest}">
                         <fieldset>
                             <div class="form-group">
                                 <i class='bx bx-user'></i>
@@ -59,7 +59,7 @@
                             <div class="login-btn-container">
                                 <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
                                 <a href="#" type="submit" class="btn btn-lg btn-light btn-block">Reset</a>
-                                <a href="#" type="submit" class="btn btn-lg btn-light btn-block">Register</a>
+                                <a href="/register" type="submit" class="btn btn-lg btn-light btn-block">Register</a>
                             </div>
                         </fieldset>
                     </form>

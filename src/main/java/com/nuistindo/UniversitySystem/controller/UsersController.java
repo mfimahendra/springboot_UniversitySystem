@@ -1,21 +1,27 @@
 package com.nuistindo.UniversitySystem.controller;
 
 import com.nuistindo.UniversitySystem.model.UsersModel;
-import com.nuistindo.UniversitySystem.service.UsersService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.nuistindo.UniversitySystem.service.UsersServiceImpl;
+import org.springframework.boot.web.servlet.server.Session;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.context.request.SessionScope;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UsersController {
 
-    private final UsersService usersService;
+    private final UsersServiceImpl usersService;
 
-    public UsersController(UsersService usersService) {
-        this.usersService = usersService;
+    public UsersController(UsersServiceImpl usersServiceImpl) {
+        this.usersService = usersServiceImpl;
     }
 
     @GetMapping("/register")
@@ -32,17 +38,17 @@ public class UsersController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute UsersModel usersModel) {
-        System.out.println("register request: " + usersModel);
         UsersModel regist = usersService.registerUser(usersModel.getUsername(), usersModel.getPassword());
         return regist == null ? "error_page" : "redirect:/login";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute UsersModel usersModel) {
-        System.out.println("login request: " + usersModel);
+    public String login(@ModelAttribute UsersModel usersModel, Model model, HttpServletRequest request) {
         UsersModel authenticated = usersService.authenticate(usersModel.getUsername(), usersModel.getPassword());
+        HttpSession session = request.getSession();
         if (authenticated != null) {
-            return "dashboard_page";
+            session.setAttribute("loggedUsername", authenticated.getUsername());
+            return "redirect:/admin/dashboard";
         } else {
             return "error_page";
         }

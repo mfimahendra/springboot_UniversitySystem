@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Error Page</title>
 </head>
 <body>
     <h1>Error Page</h1>
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
+    <a th:href="@{/register}">Register</a>
+    <a th:href="@{/login}">Login</a>
 </body>
 </html>
