@@ -98,3 +98,12 @@ body {
         }
     }    
 }
+
+#wrongMessage {
+    color: $light;
+    font-size: 12px;
+    background-color: $red;
+    padding: 2px 5px;
+    border-radius: 2px;
+    display: none;
+}

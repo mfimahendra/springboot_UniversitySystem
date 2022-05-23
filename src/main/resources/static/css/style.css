@@ -81,4 +81,13 @@ body {
   font-size: 16px;
   padding: 5px 10px;
 }
+
+#wrongMessage {
+  color: #ffffff;
+  font-size: 12px;
+  background-color: #e94b35;
+  padding: 2px 5px;
+  border-radius: 2px;
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,54 @@
+<div class="modal" id="addAdminModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register New Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/dashboard/register" method="post" th:object="${registerRequest}">
+                    <div class="form-group">
+                        <label for="field_username_add" class="col-form-label">Username:</label>
+                        <input type="text" class="form-control" name="username" id="field_username_add" placeholder="Input Username..." required>
+                    </div>                        
+                    <div class="form-group">
+                        <label for="field_password_add" class="col-form-label">Password:</label>
+                        <input type="text" class="form-control" name="password" id="field_password_add" placeholder="Input Password..." required>
+                    </div>                        
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editAdminModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/dashboard/edit" method="post" th:object="${updateRequest}">
+                    <input type="text" class="form-control" name="id" id="field-id-edit" style="display: none;" value="" required readonly>                    
+                    <div class="form-group">
+                        <label for="field-username-edit" class="col-form-label">Username:</label>
+                        <input type="text" class="form-control" name="username" id="field-username-edit" placeholder="Input Username..." required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="field-password-edit" class="col-form-label">Password:</label>
+                        <input type="password" class="form-control" name="password" id="field-password-edit" placeholder="Input Password..." required>
+                    </div>                        
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                    </div>
+                </form>
+            </div>                
+        </div>
+    </div>
+</div>

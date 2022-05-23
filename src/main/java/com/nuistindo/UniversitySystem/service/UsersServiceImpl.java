@@ -24,11 +24,30 @@ public class UsersServiceImpl implements UsersService {
         }
     }
 
+    public UsersModel updateAdmin(Integer id,String username, String password) {
+        if (username == null || password == null) {
+            return null;
+        } else {
+            UsersModel user = usersRepository.getById(id);
+            user.setUsername(username);
+            user.setPassword(password);
+            return usersRepository.save(user);
+        }
+    }
+
     public UsersModel authenticate(String username, String password) {
         return usersRepository.findByUsernameAndPassword(username, password).orElse(null);
     }
 
     public Iterable<UsersModel> listAllUsers() {
         return usersRepository.findAll();
+    }
+
+    public void deleteUser(Integer id) {
+        usersRepository.deleteById(id);
+    }
+
+    public Object getUserById(int id) {
+        return usersRepository.findById(id);
     }
 }

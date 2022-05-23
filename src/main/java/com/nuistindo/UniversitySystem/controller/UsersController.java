@@ -50,7 +50,8 @@ public class UsersController {
             session.setAttribute("loggedUsername", authenticated.getUsername());
             return "redirect:/admin/dashboard";
         } else {
-            return "error_page";
+            model.addAttribute("message", "Invalid username or password");
+            return "login_page";
         }
     }
 }

@@ -27,49 +27,12 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/css/adminStyle.css">
+    <link rel="icon" href="/img/nuist-logo.png" type="image/x-icon">
     <title>Dashboard</title>
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="sidebar_title">
-            <img src="/img/nuist-logo.png" alt="nuist-logo">
-            <h1>Student Management System</h1>
-        </div>
-        <ul class="nav-links">
-            <li class="nav-link side-show-hide-btn">
-                <a href="#" onclick="return false" id="hide-sidebar"><i class='bx bxs-arrow-to-left'></i></i> Hide
-                    Sidebar</a>
-            </li>
-            <li class="nav-link">
-                <hr class="sparator">
-            </li>
-            <li class="nav-link">
-                <a href="#" class=""><i class='bx bxs-dashboard'></i> Dashboard</a>
-            </li>
-            <li class="nav-link">
-                <a href="#" class=""><i class='bx bxs-user'></i> Student</a>
-            </li>
-            <li class="nav-link">
-                <a href="#" class=""><i class='bx bxs-book'></i> Courses</a>
-            </li>
-            <li class="nav-link">
-                <a href="#" class=""><i class='bx bxs-user-rectangle'></i> Teacher</a>
-            </li>
-            <li class="nav-link">
-                <a href="#" class=""><i class='bx bxs-school'></i> School</a>
-            </li>
-            <li class="nav-link">
-                <hr class="sparator">
-            </li>
-        </ul>
-        <footer class="sidebar-footer">
-            <p>
-                &copy; 2022 NUIST CST
-                201953082034 M Fakhrizal Ihza Mahendra
-            </p>
-        </footer>
-    </div>
+    <div id="sidebar" class="sidebar"></div>
 
     <div class="content-header">
         <div class="data-header">
@@ -94,7 +57,7 @@
                                 <a class="dropdown-item" href="#"><span style="color: #e94b35"
                                         th:text="${username}"></span></a>
                                 <a class="dropdown-item" href="#">Settings</a>
-                                <form action="/Admin/logout" method="post">
+                                <form th:action="@{/admin/logout}" method="post">
                                     <button class="dropdown-item" type="submit">Logout</button>
                                 </form>
                             </div>
@@ -105,58 +68,71 @@
         </div>
     </div>
 
-        <div class="content">
-            <div class="data-body">
-                <div class="container nomarg">
-                    <div class="row">
-                        <div class="col">
-                            <div class="dash-card d-flex flex-column justify-content-center align-items-center">
-                                <i class="bx bxs-user"></i>
-                                <p>Student</p>
-                                <h2>20</h2>
-                            </div>
+    <div id="AdminModal" class="modal-group"></div>
+
+    <div class="content">
+        <div class="data-body">
+            <div class="container nomarg">
+                <div class="search-field">
+                    <div class="row align-items-center">
+                        <div class="col-8 d-flex">
+                            <button id="addAdmin" class="btn btn-primary me-1" data-bs-toggle="modal"
+                                data-bs-target="#addAdminModal">Add Admin</button>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="dash-card d-flex flex-column justify-content-center align-items-center">
-                                <i class="bx bxs-book"></i>
-                                <p>Courses</p>
-                                <h2>50</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="dash-card d-flex flex-column justify-content-center align-items-center">
-                                <i class='bx bxs-user-rectangle'></i>
-                                <p>Teacher</p>
-                                <h2>20</h2>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="search" onkeyup="search()"
+                                    placeholder="Search Admin ...">
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="row table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            <tr th:each="user : ${ListUsers}" th:id="admin_row_ + ${user.id}">
+                                <td th:text="${user.id}"></td>
+                                <td th:text="${user.username}"></td>
+                                <td style="display: none;" th:text="${user.password}"></td>
+                                <td>
+                                    <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editAdminModal"
+                                        th:onclick="|editDataAdmin('${user.id}')|"><i class='bx bx-edit'></i></a>
+                                    <a th:href="${'/admin/dashboard/delete/' + user.id}"
+                                        onclick="return confirm('Do You want to Delete this Users?')"
+                                        class="btn btn-danger"><i class='bx bx-trash'></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+    </div>
 
-        <script type="text/javascript">
-            $('#dropdownMenuButton').click(function () {
-                $('.dropdown-menu').toggle()
-            });
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AdminModal').load("/AdminModal.html");
+        });
 
-            $('.btn-toggle-desktop').click(function () {
-                $('.sidebar').toggleClass('side-hide');
-                $('.content-header').toggleClass('side-slide');
-            });
+        function editDataAdmin(id) {
+            var username = $('#admin_row_' + id).find('td').eq(1).text();
+            var password = $('#admin_row_' + id).find('td').eq(2).text();
 
-            $('.btn-toggle-mobile').click(function () {
-                $('.sidebar').addClass('side-show-mobile');
-            });
-
-            $('#hide-sidebar').click(function () {
-                $('.sidebar').removeClass('side-show-mobile');
-            });
-
-        </script>
+            $("#field-id-edit").val(id);
+            $("#field-username-edit").val(username);
+            $("#field-password-edit").val(password);
+        }
+    </script>
 </body>
+
 </html>

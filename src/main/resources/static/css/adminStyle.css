@@ -249,7 +249,14 @@ body {
 .content {
   top: 0;
   margin-right: 0;
+  margin-left: 200px;
   padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
 }
 
 .content .data-body {
