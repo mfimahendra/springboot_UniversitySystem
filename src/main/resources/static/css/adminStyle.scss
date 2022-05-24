@@ -306,6 +306,14 @@ body {
     }
 }
 
+.tbody {
+    tr {
+        td {
+            font-size: 11px;
+        }
+    }
+}
+
 .side-hide {display: none;}
 .side-show-mobile {
     position: absolute;

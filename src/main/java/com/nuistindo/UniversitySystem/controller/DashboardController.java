@@ -18,16 +18,6 @@ public class DashboardController{
         this.usersService = usersServiceImpl;
     }
 
-    @PostMapping("/admin/dashboard/register")
-    public String register(@ModelAttribute UsersModel usersModel , Model model) {
-        try {
-            UsersModel regist = usersService.registerUser(usersModel.getUsername(), usersModel.getPassword());
-            return regist == null ? "error_page" : "redirect:/admin/dashboard";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "error_page";
-        }
-    }
 
     @GetMapping("/admin/dashboard")
     public String getAdminDashboardPage(Model model, HttpServletRequest request) {
@@ -38,6 +28,17 @@ public class DashboardController{
             model.addAttribute("ListUsers", usersService.listAllUsers());
             return "admin_dashboard";
         } catch (Exception e) {
+            return "error_page";
+        }
+    }
+
+    @PostMapping("/admin/dashboard/register")
+    public String register(@ModelAttribute UsersModel usersModel , Model model) {
+        try {
+            UsersModel regist = usersService.registerUser(usersModel.getUsername(), usersModel.getPassword());
+            return regist == null ? "error_page" : "redirect:/admin/dashboard";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "error_page";
         }
     }

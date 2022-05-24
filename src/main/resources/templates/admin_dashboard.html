@@ -51,11 +51,9 @@
                         <div class="dropdown" style="width: 50px;">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class='bx bx-user'></i>
+                                <i class='bx bx-user'></i><span style="color: white;" th:text="${username}"></span>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-account " aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"><span style="color: #e94b35"
-                                        th:text="${username}"></span></a>
+                            <div class="dropdown-menu dropdown-menu-account " aria-labelledby="dropdownMenuButton">                                
                                 <a class="dropdown-item" href="#">Settings</a>
                                 <form th:action="@{/admin/logout}" method="post">
                                     <button class="dropdown-item" type="submit">Logout</button>
@@ -75,13 +73,13 @@
             <div class="container nomarg">
                 <div class="search-field">
                     <div class="row align-items-center">
-                        <div class="col-8 d-flex">
+                        <div class="col-8">
                             <button id="addAdmin" class="btn btn-primary me-1" data-bs-toggle="modal"
                                 data-bs-target="#addAdminModal">Add Admin</button>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="search" onkeyup="search()"
+                                <input type="text" class="form-control" id="search" onkeyup="searchAdmin()"
                                     placeholder="Search Admin ...">
                             </div>
                         </div>

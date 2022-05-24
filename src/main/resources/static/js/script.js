@@ -20,7 +20,7 @@ $('#hide-sidebar').click(function () {
     $('.sidebar').removeClass('side-show-mobile');
 });
 
-function search() {
+function searchAdmin() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search");
     filter = input.value.toUpperCase();
@@ -28,6 +28,44 @@ function search() {
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function searchStudentByName() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchByName");
+    filter = input.value.toUpperCase();
+    table = document.getElementsByClassName("table")[0];
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function searchStudentByID() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchById");
+    filter = input.value.toUpperCase();
+    table = document.getElementsByClassName("table")[0];
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
