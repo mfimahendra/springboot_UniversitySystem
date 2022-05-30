@@ -2,6 +2,7 @@
     <img src="/img/nuist-logo.png" alt="nuist-logo">
     <h1>Student Management System</h1>
 </div>
+<span style="display: none;" id="sidebarNavisActive" th:text="${sidebarNav}"></span>
 <ul class="nav-links">
     <li class="nav-link side-show-hide-btn">
         <a href="#" onclick="return false" id="hide-sidebar"><i class='bx bxs-arrow-to-left'></i></i> Hide
@@ -11,22 +12,22 @@
         <hr class="sparator">
     </li>
     <li class="nav-link">
-        <a href="/admin/dashboard" class=""><i class='bx bxs-dashboard'></i> Dashboard</a>
+        <a href="/admin/dashboard" class=""><i class='bx bxs-dashboard'></i><span class="navLabel" > Dashboard</span></a>
     </li>
     <li class="nav-link">
-        <a href="/admin/student" class=""><i class='bx bxs-user'></i> Student</a>
+        <a href="/admin/student" class=""><i class='bx bxs-user'></i><span class="navLabel"> Student</span></a>
     </li>
     <li class="nav-link">
-        <a href="#" class=""><i class='bx bxs-book'></i> Courses</a>
+        <a href="/admin/course" class=""><i class='bx bxs-book'></i><span class="navLabel"> Courses</span></a>
     </li>
     <li class="nav-link">
-        <a href="#" class=""><i class='bx bxs-book-content'></i> Enrollment</a>
+        <a href="/admin/enrollment" class=""><i class='bx bxs-book-content'></i><span class="navLabel">  Enrollment</span></a>
     </li>
     <li class="nav-link">
-        <a href="#" class=""><i class='bx bxs-user-rectangle'></i> Teacher</a>
+        <a href="/admin/teacher" class=""><i class='bx bxs-user-rectangle'></i><span class="navLabel"> Teacher</span></a>
     </li>
     <li class="nav-link">
-        <a href="#" class=""><i class='bx bxs-school'></i> School</a>
+        <a href="#" class=""><i class='bx bxs-school'></i><span class="navLabel"> School</span></a>
     </li>
     <li class="nav-link">
         <hr class="sparator">
@@ -38,3 +39,15 @@
         201953082034 M Fakhrizal Ihza Mahendra
     </p>
 </footer>
+
+<script>
+    $(document).ready(function () {
+        var sidebarNavisActive = $('#sidebarNavisActive').text();
+        $('.nav-links a').each(function () {
+            var $this = $(this);
+            if ($this.attr('href') === sidebarNavisActive) {
+                $this.addClass('active');
+            }
+        });
+    });
+</script>

@@ -29,8 +29,8 @@ $opensans: 'Open Sans', sans-serif;
 }
 
 body {
-    font-family: $nunito;
-    background: $semilight;    
+    font-family: $nunito;    
+    background-image: url("/img/nuist-bg.jpg");
 }
 
 .header-title {
@@ -42,35 +42,85 @@ body {
     }
 }
 
-.login-modal {
-    background: $semilightblue;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);        
+.login-container {
+    padding: 0;
+    margin: 0;    
+    display: flex;
+    height: 100%;
 
-    .panel-img {
-        width: 100%;
-        overflow: hidden;
-        object-fit: contain;
-        border-radius: 4px;
+    .left-container {            
+        width: 40%;
+        height: 100vh;
+        padding: 2%;                
+        color: $light;        
 
-        img {
-            width: 100%;
-            height: auto;
-        }
+        .nuist-logo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            img {
+                width: 60px;
+                height: auto;
+                object-fit: contain;
+            }
+            span {
+                width: 70%;
+                font-size: 14px;
+            }
+        }        
     }
+    
+    .right-container {
+        width: 100%;
+        height: 100vh;
+        padding: 2%;
+        // background-color: $light;
 
-    .panel-container {
-        margin: 0;                
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.753);        
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5.9px);
+        -webkit-backdrop-filter: blur(5.9px);        
 
-        .panel-title {
-            font-family: $lato;
-            color: $light;
-            text-align: center;
-            font-size: 20px;
+        color: $dark;        
+
+        .title-container {
+            margin-top: 10rem;
+            width: 50%;
+
+            h1 {                
+                color: $semilightblue;
+                font-family: $opensans;
+                font-weight: 700;
+                font-size: 1.5rem;
+            }
+
+            h5 {
+                color: $semidark;
+                font-family: $opensans;
+                font-weight: 700;
+                font-size: 14px;
+            }
         }
-        .panel-body {
-            .form-group {
+
+        .login-as-container {
+            width: 50%;            
+            a {
+                font-family: $opensans;
+                text-decoration: none;
+                color: $dark;
+                font-weight: 600;
+                font-size: 14px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .form-container {
+            width: 50%;
+            .form-group {                
                 i {
                     color: $semidark;
                     position: absolute; 
@@ -85,10 +135,11 @@ body {
             .remember-me {
                 color: $light;
             }
+            
             .login-btn-container{                                
                 margin-top: 20px;
                 padding: 0;
-
+    
                 .btn {
                     width: 90px;
                     font-size: 16px;

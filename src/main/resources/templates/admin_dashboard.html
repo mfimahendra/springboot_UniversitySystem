@@ -28,12 +28,12 @@
 
     <link rel="stylesheet" href="/css/adminStyle.css">
     <link rel="icon" href="/img/nuist-logo.png" type="image/x-icon">
-    <title>Dashboard</title>
+    <title th:text="${title}"></title>
 </head>
 
 <body>
     <div id="sidebar" class="sidebar"></div>
-
+    <span style="display: none" id="sidebarNavisActive" th:text="${sidebarNav}"></span>
     <div class="content-header">
         <div class="data-header">
             <div class="container">
@@ -44,14 +44,14 @@
                     </div>
                     <div class="col-9">
                         <div class="content-title">
-                            <h1>Dashboard | Welcome <span th:text="${username}"></span></h1>
+                            <h1 th:text="${title}"></h1>
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="dropdown" style="width: 50px;">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class='bx bx-user'></i><span style="color: white;" th:text="${username}"></span>
+                                <i class='bx bx-user'> </i> <span style="color: white;" th:text="${username}"></span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-account " aria-labelledby="dropdownMenuButton">                                
                                 <a class="dropdown-item" href="#">Settings</a>
@@ -99,7 +99,6 @@
                             <tr th:each="user : ${ListUsers}" th:id="admin_row_ + ${user.id}">
                                 <td th:text="${user.id}"></td>
                                 <td th:text="${user.username}"></td>
-                                <td style="display: none;" th:text="${user.password}"></td>
                                 <td>
                                     <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editAdminModal"
                                         th:onclick="|editDataAdmin('${user.id}')|"><i class='bx bx-edit'></i></a>

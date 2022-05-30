@@ -8,18 +8,16 @@ import java.util.Objects;
 public class StudentsModel {
     @Id
 
-    String id;
-
-    String name;
-
-    String major;
-
-    String country;
+    private String id;
+    private String name;
+    private String gender;
+    private String major;
+    private String country;
+    private String password;
 
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -32,6 +30,9 @@ public class StudentsModel {
         this.name = name;
     }
 
+    public String getGender() { return gender; }
+
+    public void setGender(String gender) { this.gender = gender; }
     public String getMajor() {
         return major;
     }
@@ -48,24 +49,29 @@ public class StudentsModel {
         this.country = country;
     }
 
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StudentsModel that = (StudentsModel) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(major, that.major) && Objects.equals(country, that.country);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(gender, that.gender) && Objects.equals(major, that.major) && Objects.equals(country, that.country) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, major, country);
+        return Objects.hash(id, name, gender, major, country, password);
     }
 
     @Override
     public String toString() {
-        return "StudentModel{" +
+        return "StudentsModel{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
                 ", major='" + major + '\'' +
                 ", country='" + country + '\'' +
                 '}';

@@ -1,7 +1,6 @@
 package com.nuistindo.UniversitySystem.service;
 
 import com.nuistindo.UniversitySystem.model.StudentsModel;
-import com.nuistindo.UniversitySystem.model.UsersModel;
 import com.nuistindo.UniversitySystem.repository.StudentsRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,15 +21,17 @@ public class StudentsServiceImpl implements StudentsService{
         return studentsRepository.findOneById(id).orElse(null);
     }
 
-    public StudentsModel registerStudents(String student_id, String name, String major, String country) {
+    public StudentsModel registerStudents(String student_id, String name, String gender ,String major, String country, String password) {
         if (student_id == null || name == null) {
             return null;
         } else {
             StudentsModel student = new StudentsModel();
             student.setId(student_id);
             student.setName(name);
+            student.setGender(gender);
             student.setMajor(major);
             student.setCountry(country);
+            student.setPassword(password);
             return studentsRepository.save(student);
         }
     }

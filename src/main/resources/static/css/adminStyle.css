@@ -317,6 +317,10 @@ body {
   }
 }
 
+#student-table tbody tr td {
+  font-size: 14px;
+}
+
 .side-hide {
   display: none;
 }
@@ -338,6 +342,10 @@ body {
   .side-show-hide-btn {
     display: block;
   }
+}
+
+.sideisActive {
+  background-color: #6497B1;
 }
 
 ::-webkit-scrollbar {

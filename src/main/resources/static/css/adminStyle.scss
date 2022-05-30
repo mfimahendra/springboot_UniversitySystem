@@ -306,10 +306,12 @@ body {
     }
 }
 
-.tbody {
-    tr {
-        td {
-            font-size: 11px;
+#student-table {
+    tbody {
+        tr {
+            td {
+                font-size: 14px;
+            }
         }
     }
 }
@@ -325,6 +327,10 @@ body {
     @media screen and (max-width:768px) {
         display: block;
     }
+}
+
+.sideisActive{
+    background-color: $semilightblue;    
 }
 
 ::-webkit-scrollbar {

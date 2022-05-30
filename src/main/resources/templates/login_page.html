@@ -21,48 +21,45 @@
     <title>Login Page</title>
 </head>
 <body>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col header-title">
-            <h1>Student Management System</h1>
+<div class="login-container">
+    <div class="left-container">
+        <div class="nuist-logo">
+            <img src="img/nuist-logo.png" alt="">
+            <span>Nanjing University of Information Science Technology</span>
+        </div>
+
+    </div>
+    <div class="right-container">
+        <div class="title-container">
+            <h1>Welcome to NUIST login page</h1>            
+        </div>
+        <div class="login-as-container mb-3">
+            <a href="#">Login as Admin</a> | 
+            <a href="#">Login as Teacher</a> | 
+            <a href="#">Login as Student</a>
+        </div>
+        <div class="form-container">
+            <form role="form" action="login" method="post" th:object="${loginRequest}">
+                <fieldset>
+                    <div class="form-group">
+                        <i class='bx bx-user'></i>
+                        <input class="form-control" id="username" placeholder="Username" name="username" type="text" autofocus required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input class="form-control" placeholder="Password" name="password" type="password" required>
+                    </div>                            
+                    <span id="wrongMessage" th:text="${message}"></span>                            
+                    <div class="login-btn-container">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>                                
+                        <a th:href="@{/register}" class="btn btn-lg btn-primary btn-block">Register</a>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>
-<div class="container mt-5 login-modal">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="panel-img">
-                <img src="img\nuist.jpg" alt="">
-            </div>
-        </div>
-        <div class="col-sm-4 panel-container">
-            <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
-                </div>
-                <div class="panel-body mt-2">
-                    <form role="form" action="login" method="post" th:object="${loginRequest}">
-                        <fieldset>
-                            <div class="form-group">
-                                <i class='bx bx-user'></i>
-                                <input class="form-control" placeholder="Username" name="username" type="text" autofocus required>
-                            </div>
-                            <div class="form-group mt-2">
-                                <i class='bx bxs-lock-alt'></i>
-                                <input class="form-control" placeholder="Password" name="password" type="password" required>
-                            </div>                            
-                            <span id="wrongMessage" th:text="${message}"></span>                            
-                            <div class="login-btn-container">
-                                <button type="submit" class="btn btn-lg btn-light btn-block">Login</button>                                
-                                <button href="/register" type="submit" class="btn btn-lg btn-light btn-block">Register</button>
-                            </div>
-                        </fieldset>
-                    </form>                                                            
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 </body>
 <script>
     $(document).ready(function(){

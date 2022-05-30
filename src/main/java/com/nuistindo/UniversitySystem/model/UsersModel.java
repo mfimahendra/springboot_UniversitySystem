@@ -10,8 +10,8 @@ public class UsersModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     int id;
-    String username;
-    String password;
+    private String username;
+    private String password;
 
     public int getId() {
         return id;

@@ -3,7 +3,6 @@ package com.nuistindo.UniversitySystem.controller;
 import com.nuistindo.UniversitySystem.model.StudentsModel;
 import com.nuistindo.UniversitySystem.model.UsersModel;
 import com.nuistindo.UniversitySystem.service.StudentsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +21,8 @@ public class StudentsController {
         try {
             String loggedUsername = request.getSession().getAttribute("loggedUsername").toString();
             model.addAttribute("username", loggedUsername);
+            model.addAttribute("title","Student Page");
+            model.addAttribute("sidebarNav"," Student");
             model.addAttribute("ListStudents", studentsService.findAllByOrderByIdAsc());
             return "admin_student";
 
@@ -36,6 +37,9 @@ public class StudentsController {
         try {
             String loggedUsername = request.getSession().getAttribute("loggedUsername").toString();
             model.addAttribute("username", loggedUsername);
+            model.addAttribute("idStudent",id);
+            model.addAttribute("title","Student Page | " + id);
+            model.addAttribute("sidebarNav"," Student");
             model.addAttribute("student", studentsService.findOneStudent(id));
             return "admin_student_details";
 
@@ -50,6 +54,7 @@ public class StudentsController {
         try {
             String loggedUsername = request.getSession().getAttribute("loggedUsername").toString();
             model.addAttribute("username", loggedUsername);
+            model.addAttribute("title","Register New Student");
             model.addAttribute("student", new UsersModel());
             return "admin_student_new";
 
@@ -64,7 +69,7 @@ public class StudentsController {
         try {
             String loggedUsername = request.getSession().getAttribute("loggedUsername").toString();
             model.addAttribute("username_logged", loggedUsername);
-            StudentsModel newStudent = studentsService.registerStudents(studentsModel.getId(), studentsModel.getName(), studentsModel.getMajor(), studentsModel.getCountry());
+            StudentsModel newStudent = studentsService.registerStudents(studentsModel.getId(), studentsModel.getName(), studentsModel.getGender(), studentsModel.getMajor(), studentsModel.getCountry(), studentsModel.getPassword());
             return newStudent == null ? "error_page" : "redirect:/admin/student";
 
         } catch (Exception e) {
@@ -100,7 +105,4 @@ public class StudentsController {
             return "error_page";
         }
     }
-
-
-
 }

@@ -24,6 +24,8 @@ public class DashboardController{
         try {
             String loggedUsername = request.getSession().getAttribute("loggedUsername").toString();
             model.addAttribute("username", loggedUsername);
+            model.addAttribute("title","Welcome | " + loggedUsername);
+            model.addAttribute("sidebarNav"," Dashboard");
             model.addAttribute("updateRequest", new UsersModel());
             model.addAttribute("ListUsers", usersService.listAllUsers());
             return "admin_dashboard";
